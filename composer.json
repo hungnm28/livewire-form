@@ -1,0 +1,36 @@
+{
+    "name": "hungnm28/livewire-form",
+    "description": "This package help create laravel form use livewire.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hungnm28\\LivewireForm\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "HungNM28"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "\\Hungnm28\\LivewireForm\\LivewireFormServiceProvider"
+            ],
+            "aliases": {
+                "LForm": "\\Hungnm28\\LaravelForm\\LaravelForm"
+            }
+        }
+    },
+    "scripts": {
+        "post-package-install": [
+            "@php artisan vendor:publish --tag=livewire-form"
+        ],
+        "post-package-update": [
+            "@php artisan vendor:publish --tag=livewire-form"
+        ]
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
