@@ -7,8 +7,6 @@ use Illuminate\Support\ServiceProvider;
 
 class LivewireFormServiceProvider extends ServiceProvider
 {
-    protected $components = [
-    ];
 
     public function register()
     {
@@ -17,25 +15,15 @@ class LivewireFormServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'lf-form');
-        $this->registerComponent();
         $this->registerPublishing();
-    }
-
-    protected function registerComponent()
-    {
-        foreach ($this->components as $component) {
-            $path = resource_path("views/components/lf/") . str_replace(".", "/", $component) . ".blade.php";
-            if (!file_exists($path)) {
-                Blade::component('lf-form::components.' . $component, 'lf.' . $component);
-            }
-        }
     }
 
     protected function registerPublishing()
     {
         $this->publishes([
-            __DIR__ . '/../resources/views/components' => base_path("resources/views/components/lf")
+            __DIR__ . '/../resources/views/components' => base_path("resources/views/components/lf"),
+            __DIR__ . '/../resources/assets/sass/livewire-form' => base_path("resources/assets/sass/livewire-form"),
+            __DIR__ . '/../publishes/assets/css/livewire-form.css' => public_path("assets/css/livewire-form.css"),
         ], 'livewire-form');
 
     }

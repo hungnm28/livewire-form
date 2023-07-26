@@ -17,10 +17,7 @@
         "laravel": {
             "providers": [
                 "\\Hungnm28\\LivewireForm\\LivewireFormServiceProvider"
-            ],
-            "aliases": {
-                "LForm": "\\Hungnm28\\LaravelForm\\LaravelForm"
-            }
+            ]
         }
     },
     "scripts": {
