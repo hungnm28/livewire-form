@@ -1,0 +1,26 @@
+{
+    "name": "hungnm28/livewire-form",
+    "description": "This package used for form ui",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hungnm28\\LivewireForm\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hungnm28",
+            "email": "nguyenmanhhung28@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "\\Hungnm28\\LivewireForm\\LivewireFormServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
