@@ -1,15 +1,9 @@
-@props(['title'=>null,"footer"=>null,"tools"=>null])
-<div {{$attributes->merge(["class"=>"[:where(&)]:w-full"])}}>
-    <div class="w-full flex justify-between items-center px-4 pt-4">
-        <div class="flex-1">
-            @if($title)
-                <span class="text-3xl block">{{$title}}</span>
-            @endif
-        </div>
-        <div class="flex-none flex gap-1 items-center">{{$tools}}</div>
+@props(['header' => null, 'footer' => null, 'tools' => null])
+
+<div {{ $attributes->merge(['class' => '[:where(&)]:w-full overflow-hidden rounded-2xl border border-gray-200 [:where(&)]:bg-white shadow-sm dark:border-gray-800 [:where(&)]:dark:bg-gray-900/50']) }}>
+    {{$header}}
+    <div class="flex w-full flex-wrap gap-y-1 px-3 py-4 md:px-4">
+        {{ $slot }}
     </div>
-    <div class="w-full flex flex-wrap p-4 px-2">{{$slot}}</div>
-    @if($footer)
-        {{$footer}}
-    @endif
+    {{$footer}}
 </div>

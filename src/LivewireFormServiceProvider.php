@@ -1,36 +1,58 @@
 <?php
+
 namespace Hungnm28\LivewireForm;
+
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class LivewireFormServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
-        parent::register();
-
+        $this->mergeConfigFrom(__DIR__.'/../config/livewire-form.php', 'livewire-form');
     }
-    public function boot(){
-        $this->registerComponent();
+
+    public function boot(): void
+    {
+        $this->registerViews();
+        $this->registerBladeComponents();
         $this->registerPublishing();
     }
 
-    protected function registerComponent()
+    protected function registerViews(): void
     {
+        // Namespace views: livewire-form::...
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'livewire-form');
+    }
 
-        // Nạp views với namespace "livewire-form"
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'livewire-form');
-        // Đăng ký anonymous Blade components (tự động nhận <x-lf::button>)
+    protected function registerBladeComponents(): void
+    {
+        /**
+         * Anonymous components:
+         * resources/views/components/button.blade.php
+         * => <x-lf::button />
+         *
+         * Lưu ý: anonymousComponentNamespace nhận "view namespace", không phải đường dẫn.
+         * livewire-form::components => resources/views/components/*
+         */
         Blade::anonymousComponentNamespace('livewire-form::components', 'lf');
 
+        // Nếu bạn có components class-based thì dùng:
+        // Blade::componentNamespace('Hungnm28\\LivewireForm\\View\\Components', 'lf');
     }
-    protected function registerPublishing()
+
+    protected function registerPublishing(): void
     {
-        // Cho phép publish views nếu cần override ngoài app
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/lf'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/livewire-form'),
         ], 'livewire-form-views');
+
+        $this->publishes([
+            __DIR__.'/../config/livewire-form.php' => config_path('livewire-form.php'),
+        ], 'livewire-form-config');
+
+        $this->publishes([
+            __DIR__.'/../resources/js' => resource_path('js/vendor/livewire-form'),
+        ], 'livewire-form-assets');
     }
-
-
 }

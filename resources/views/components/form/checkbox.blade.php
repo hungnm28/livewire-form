@@ -1,11 +1,11 @@
-@props(['name','label'=>null,'help'=>null,"class"=>null,"data"=>[]])
-<x-lf::form.field :name="$name" :label="$label" :help="$help" :class="$class">
-    <div class="w-full flex flex-wrap gap-4">
-        @foreach($data as $k=>$lb)
-            <label class="inline-flex items-center gap-2 cursor-pointer hover:text-primary-500">
-                <input type="checkbox" value="{{$k}}" {{$attributes->merge(['class'=>" text-white hover:border-primary-500 border-gray-300 cursor-pointer size-6 peer accent-primary-500 checked:border-primary-500"])}} />
-                <span class="text-lg font-bold peer-checked:text-primary-600">{{$lb}}</span>
-            </label>
-        @endforeach
-    </div>
-</x-lf::form.field>
+@props(['label'=>''])
+<label class="inline-flex items-center gap-2 cursor-pointer text-gray-700 user-select-none">
+    <input {{$attributes->merge(['type'=>'checkbox','class'=>'peer sr-only'])}} />
+    <svg xmlns="http://www.w3.org/2000/svg" class="block w-8 h-8 peer-checked:hidden peer-disabled:opacity-50 peer-disabled:cursor-not-allowed" viewBox="0 -960 960 960"
+         fill="currentColor"><path
+                d="M212.31-140Q182-140 161-161q-21-21-21-51.31v-535.38Q140-778 161-799q21-21 51.31-21h535.38Q778-820 799-799q21 21 21 51.31v535.38Q820-182 799-161q-21 21-51.31 21H212.31Zm0-60h535.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-535.38q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H212.31q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v535.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85Z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="hidden w-8 h-8 text-primary-700 peer-checked:block peer-disabled:opacity-50 peer-disabled:cursor-not-allowed" viewBox="0 -960 960 960"
+         fill="currentColor"><path
+                d="m424-325.85 268.92-268.92-42.15-42.15L424-410.15l-114-114L267.85-482 424-325.85ZM212.31-140Q182-140 161-161q-21-21-21-51.31v-535.38Q140-778 161-799q21-21 51.31-21h535.38Q778-820 799-799q21 21 21 51.31v535.38Q820-182 799-161q-21 21-51.31 21H212.31Zm0-60h535.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-535.38q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H212.31q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v535.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85ZM200-760v560-560Z"/></svg>
+    <span class="whitespace-nowrap peer-checked:text-primary-700 peer-disabled:cursor-not-allowed">{{$label}}</span>
+</label>

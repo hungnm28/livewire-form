@@ -1,29 +1,38 @@
-@props([
-    "icon"=>'menu',
-    "active"=>false,
-    "name"=>"",
-    "url"=>""
-    ,"children"=>[]
-])
-<li x-data="{active:{{$active?'true':'false'}}}" :data-active="active" {{$attributes}} class="w-full block border-b hover:bg-primary-200 dark:hover:bg-gray-800">
-   <span class="w-full flex [[data-active]_&]:bg-primary-600 [[data-active]_&]:text-white hover:bg-primary-500 hover:text-white ">
-       <a href="{{$url}}" class="w-full flex-auto flex h-12 items-center">
-            <span class="w-14 flex-none flex items-center justify-center"> <x-dynamic-component :component="'lf::icon.' . $icon" /></span>
-           <span class="flex-auto hidden [[data-show-aside]_&]:flex text-lg">{{$name}}</span>
-       </a>
-       @if($children)
-       <span @click="active = !active" class="w-8 flex-none flex items-center justify-center cursor-pointer [[data-active]_&]:rotate-90 hover:rotate-90"><x-lf::icon.chevron /></span>
-       @endif
-   </span>
-    @if($children)
-    <ul class="w-full pl-14 hidden [[data-show-aside]_[data-active]_&]:md:block">
-        @foreach($children as $child)
-        <li class="w-full flex border-t">
-            <a href="{{$child->url}}"  data-active class="flex flex-auto items-center py-2 hover:underline @if($child->active) underline @endif">
-                {{$child->name}}
-            </a>
-        </li>
-        @endforeach
-    </ul>
+@props(['icon'=>'home',"url"=>'#',"title"=>'','active'=>false, 'children'=>[]])
+<li x-data="{open:{{$active?'true':'false'}}}"
+    class="w-full block border-t border-t-primary-500 dark:border-t-gray-800 border-b border-b-primary-700 dark:border-b-gray-950 relative">
+                <span class="w-full flex items-center">
+                    <a href="{{$url}}"
+                       class="w-full flex-auto  flex items-center text-white  hover:bg-primary-500/20 cursor-pointer">
+                    <x-lf::icon.font :name="$icon"
+                                     class="w-12 h-12 flex items-center justify-center text-2xl font-thin"/>
+                    <span class="flex-auto max-w-0 overflow-hidden whitespace-nowrap opacity-0 translate-x-2 transition-all duration-300 ease-in-out [[data-show-aside]_&]:max-w-[12rem] [[data-show-aside]_&]:opacity-100 [[data-show-aside]_&]:translate-x-0">
+                        {{$title}}
+                    </span>
+                </a>
+                    @if($children)
+                        <x-lf::icon.font
+                                name="chevron-right"
+                                class="w-10 h-10 flex justify-center items-center text-white cursor-pointer transition-transform duration-300 ease-in-out"
+                                x-bind:class="open ? 'rotate-90' : 'rotate-0'"
+                                @click="open=!open"
+                        />
+                    @endif
+                </span>
+    @if(!empty($children))
+        <ul
+                x-bind:class="open ? 'max-h-40 opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-1'"
+                class="w-full overflow-hidden pl-10 transition-all duration-300 ease-in-out hidden [[data-show-aside]_&]:block"
+        >
+            @foreach($children as $child)
+                <li class="w-full">
+                    <a href="{{data_get($child,"url","#")}}"
+                       class="w-full flex items-center gap-1 p-2 border-t border-t-primary-500 dark:border-t-gray-800 text-white hover:underline">
+                        <x-lf::icon.font :name="data_get($child,'icon','plus')" />
+                        <span class="flex-auto overflow-hidden whitespace-nowrap {{data_get($child,"active")?'underline':''}}">{{data_get($child,"title")}}</span>
+                    </a>
+                </li>
+            @endforeach
+        </ul>
     @endif
 </li>

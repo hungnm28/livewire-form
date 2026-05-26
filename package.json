@@ -1,0 +1,12 @@
+{
+    "name": "@hungnm28/livewire-form",
+    "private": true,
+    "type": "module",
+    "description": "Source assets for the hungnm28/livewire-form Laravel package.",
+    "exports": {
+        ".": "./resources/js/app.js",
+        "./theme": "./resources/js/actions/theme.js",
+        "./aside": "./resources/js/actions/aside.js",
+        "./fullscreen": "./resources/js/actions/fullscreen.js"
+    }
+}

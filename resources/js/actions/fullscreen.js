@@ -1,8 +1,8 @@
 function toggleFullscreen() {
     if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
+        document.documentElement.requestFullscreen?.();
     } else {
-        document.exitFullscreen();
+        document.exitFullscreen?.();
     }
 }
 

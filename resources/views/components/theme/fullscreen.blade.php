@@ -1,5 +1,6 @@
 <button id="fullscreenToggle"
-        onclick="toggleFullscreen()"
+        type="button"
+        data-action="toggleFullscreen"
         class="flex items-center gap-1 px-3 py-1.5 text-sm rounded bg-zinc-800 text-white hover:bg-zinc-700 transition"
 >
     <svg id="fullscreenIcon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -9,4 +10,3 @@
     </svg>
     <span id="fullscreenLabel">Toàn màn hình</span>
 </button>
-

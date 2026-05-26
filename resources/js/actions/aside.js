@@ -1,9 +1,11 @@
-function tootleAside(){
+function toggleAside() {
     document.body.toggleAttribute('data-show-aside');
 }
 
-function closeAside(){
+function closeAside() {
     document.body.removeAttribute('data-show-aside');
 }
 
-export {tootleAside,closeAside}
+const tootleAside = toggleAside;
+
+export { toggleAside, tootleAside, closeAside };

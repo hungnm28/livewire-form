@@ -7,6 +7,25 @@ const themeIcons = {
 
 let theme = localStorage.getItem('theme') || 'system';
 
+function setupThemeSettingStore() {
+    document.addEventListener('alpine:init', () => {
+        if (!window.Alpine) return;
+
+        Alpine.store('themeSetting', {
+            open: false,
+            show() {
+                this.open = true;
+            },
+            hide() {
+                this.open = false;
+            },
+            toggle() {
+                this.open = !this.open;
+            },
+        });
+    });
+}
+
 function applyTheme(themeValue) {
     if (themeValue === 'dark') {
         document.documentElement.classList.add('dark');
@@ -37,4 +56,4 @@ function setupThemeWatcher() {
     }
 }
 
-export { cycleTheme, setupThemeWatcher };
+export { cycleTheme, setupThemeWatcher, setupThemeSettingStore };
