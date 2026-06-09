@@ -1,6 +1,6 @@
 @props(['title'=>'Demo','module'=>'admin','theme_color'=>'orange','aside_mode'=>null ,'head'=>null,'aside'=>null,'author'=>null,'description'=>null,'keywords'=>null])
 @php
-    $theme = \Hungnm28\LivewireForm\Support\ModuleCookie::get($module, 'theme', 'dark'); // 'dark', 'light', 'system'
+    $theme = \Hungnm28\LivewireForm\Support\ModuleCookie::get($module, 'theme', 'system'); // 'dark', 'light', 'system'
     $theme_color = \Hungnm28\LivewireForm\Support\ModuleCookie::get($module, 'theme_color', $theme_color);
     $aside_mode = \Hungnm28\LivewireForm\Support\ModuleCookie::get($module, 'aside_mode', $aside_mode);
 @endphp
