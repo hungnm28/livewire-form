@@ -14,7 +14,10 @@
     "autoload": {
         "psr-4": {
             "Hungnm28\\LivewireForm\\": "src/"
-        }
+        },
+        "exclude-from-classmap": [
+            "/tests/"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
