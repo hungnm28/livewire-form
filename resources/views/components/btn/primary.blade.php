@@ -1,1 +1,1 @@
-<x-lf::btn {{$attributes->merge(['class'=>'bg-blue-500 border-blue-500 hover:bg-blue-600 text-white hover:border-blue-600'])}}>{{$slot}}</x-lf::btn>
+<x-lf::btn {{$attributes->merge(['class'=>'border-blue-700/20 bg-blue-600 text-white shadow-blue-700/30 ring-blue-300/70 hover:bg-blue-500 hover:border-blue-600/30 hover:ring-blue-200 dark:border-blue-300/30 dark:bg-blue-400 dark:text-white dark:shadow-blue-950/45 dark:ring-blue-200/30 dark:hover:bg-blue-300 dark:hover:text-blue-950'])}}>{{$slot}}</x-lf::btn>

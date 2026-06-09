@@ -60,7 +60,7 @@
     <div
         x-show="show"
         x-transition.opacity
-        class="fixed inset-0 bg-gray-950/60"
+        class="fixed inset-0 bg-slate-950/55 backdrop-blur-md"
         @if($closeOnClickAway && $closeable)
             x-on:click="close()"
         @endif
@@ -74,19 +74,19 @@
         x-transition:leave="ease-in duration-150"
         x-transition:leave-start="opacity-100 translate-y-0 scale-100"
         x-transition:leave-end="opacity-0 translate-y-4 scale-95"
-        class="relative z-10 flex max-h-[calc(100vh-3rem)] w-full {{ $sizeClass }} flex-col overflow-hidden rounded-lg bg-white shadow-xl dark:bg-gray-900"
+        class="relative z-10 flex max-h-[calc(100vh-3rem)] w-full {{ $sizeClass }} flex-col overflow-hidden rounded-3xl border border-slate-200/70 bg-white/85 shadow-2xl shadow-slate-950/25 ring-1 ring-slate-900/10 backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/85 dark:shadow-black/40 dark:ring-white/10"
         role="dialog"
         aria-modal="true"
         @if($title && ! $header)
             aria-labelledby="{{ $id }}-title"
         @endif
     >
-        <div class="flex flex-none items-center gap-3 border-b border-gray-200 px-4 py-3 dark:border-gray-800">
+        <div class="flex flex-none items-center gap-3 border-b border-slate-200/70 bg-white/80 px-4 py-3 backdrop-blur-xl dark:border-white/10 dark:bg-white/15">
             <div class="min-w-0 flex-auto">
                 @if($header)
                     {{ $header }}
                 @elseif($title)
-                    <h2 id="{{ $id }}-title" class="truncate text-base font-bold text-gray-900 dark:text-white">
+                    <h2 id="{{ $id }}-title" class="truncate text-base font-bold text-slate-950 dark:text-white">
                         {{ $title }}
                     </h2>
                 @endif
@@ -99,12 +99,7 @@
             @endif
 
             @if($closeable)
-                <button
-                    type="button"
-                    class="inline-flex size-9 flex-none items-center justify-center rounded text-gray-500 hover:bg-gray-100 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
-                    x-on:click="close()"
-                    aria-label="Đóng"
-                >
+                <button type="button" class="inline-flex size-9 flex-none items-center justify-center rounded-2xl border border-slate-200/70 bg-white/80 text-slate-600 shadow-sm transition hover:bg-white/85 hover:text-slate-900 dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:bg-white/20 dark:hover:text-white" x-on:click="close()" aria-label="Đóng">
                     <x-lf::icon.font name="x" class="text-xl" />
                 </button>
             @endif
@@ -115,7 +110,7 @@
         </div>
 
         @if($footer)
-            <div class="flex flex-none items-center justify-end gap-2 border-t border-gray-200 px-4 py-3 dark:border-gray-800">
+            <div class="flex flex-none items-center justify-end gap-2 border-t border-slate-200/70 bg-white/85 px-4 py-3 backdrop-blur-xl dark:border-white/10 dark:bg-white/15">
                 {{ $footer }}
             </div>
         @endif

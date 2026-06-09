@@ -1,25 +1,30 @@
-@props(['module'=>'admin'])
-@php
-$colors = [
-    'red' => 'bg-red-500 ring-red-600',
-    'orange' => 'bg-orange-500 ring-orange-600',
-    'amber' => 'bg-amber-500 ring-amber-600',
-    'yellow' => 'bg-yellow-500 ring-yellow-600',
-    'lime' => 'bg-lime-500 ring-lime-600',
-    'green' => 'bg-green-500 ring-green-600',
-    'emerald' => 'bg-emerald-500 ring-emerald-600',
-    'teal' => 'bg-teal-500 ring-teal-600',
-    'cyan' => 'bg-cyan-500 ring-cyan-600',
-    'sky' => 'bg-sky-500 ring-sky-600',
-    'blue' => 'bg-blue-500 ring-blue-600',
-    'indigo' => 'bg-indigo-500 ring-indigo-600',
-    'violet' => 'bg-violet-500 ring-violet-600',
-    'purple' => 'bg-purple-500 ring-purple-600',
-    'fuchsia' => 'bg-fuchsia-500 ring-fuchsia-600',
-    'pink' => 'bg-pink-500 ring-pink-600',
-    'rose' => 'bg-rose-500 ring-rose-600',
-];
-@endphp
+@props([
+    'module' => 'admin',
+    'showThemeColor' => true,
+    'showAsideMode' => true,
+])
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        if (Alpine.store('themeSetting')) {
+            return;
+        }
+
+        Alpine.store('themeSetting', {
+            open: false,
+            show() {
+                this.open = true;
+            },
+            hide() {
+                this.open = false;
+            },
+            toggle() {
+                this.open = ! this.open;
+            },
+        });
+    });
+</script>
+
 <div
     x-cloak
     x-data
@@ -27,66 +32,45 @@ $colors = [
     @click="$store.themeSetting.hide()"
     @keydown.escape.window="$store.themeSetting.hide()"
     x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0 "
-    x-transition:enter-end="opacity-100 "
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
     x-transition:leave="transition ease-in duration-300"
     x-transition:leave-start="opacity-100"
     x-transition:leave-end="opacity-0"
-
-    class="fixed top-0 left-0 right-0 bottom-0 bg-black/30 bg-opacity-10 z-50 pl-12 flex flex-row-reverse cursor-pointer"
+    class="fixed inset-0 z-50 flex cursor-pointer flex-row-reverse bg-slate-950/45 pl-6 backdrop-blur-md sm:pl-12"
 >
-    <div @click.stop class="w-full max-w-96 bg-white dark:bg-gray-900 cursor-auto"
-         x-show="$store.themeSetting.open"
-         x-transition:enter="transform transition ease-out duration-300"
-         x-transition:enter-start="translate-x-full opacity-0"
-         x-transition:enter-end="translate-x-0 opacity-100"
-         x-transition:leave="transform transition ease-in duration-300"
-         x-transition:leave-start="translate-x-0 opacity-100"
-         x-transition:leave-end="translate-x-full opacity-0"
+    <div
+        @click.stop
+        class="flex h-full w-full max-w-[28rem] cursor-auto flex-col overflow-hidden rounded-l-[2rem] border-l border-slate-200/70 bg-white/85 shadow-2xl shadow-slate-950/25 ring-1 ring-slate-900/10 backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/85 dark:shadow-black/40 dark:ring-white/10"
+        x-show="$store.themeSetting.open"
+        x-transition:enter="transform transition ease-out duration-300"
+        x-transition:enter-start="translate-x-full opacity-0"
+        x-transition:enter-end="translate-x-0 opacity-100"
+        x-transition:leave="transform transition ease-in duration-300"
+        x-transition:leave-start="translate-x-0 opacity-100"
+        x-transition:leave-end="translate-x-full opacity-0"
     >
-        <div class="w-full border-b flex">
-            <div class="flex-auto flex items-center justify-between p-4"><span class="font-bold">Setting</span></div>
+        <div class="flex w-full border-b border-slate-200/70 bg-white/80 backdrop-blur-xl dark:border-white/10 dark:bg-white/15">
+            <div class="flex flex-auto items-center justify-between p-5">
+                <div>
+                    <span class="block text-base font-bold text-slate-950 dark:text-white">Theme Setting</span>
+                    <span class="mt-0.5 block text-xs text-slate-600 dark:text-slate-300">Customize module appearance</span>
+                </div>
+            </div>
             <div class="flex-none p-2">
-                <span @click="$store.themeSetting.hide()" class="w-8 h-8 rounded-full shadow-lg bg-white dark:bg-gray-900 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer"><i class="ti ti-x"></i> </span>
+                <span @click="$store.themeSetting.hide()" class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-2xl border border-slate-200/70 bg-white/85 text-slate-600 shadow-sm transition hover:bg-white/85 hover:text-slate-950 dark:border-white/10 dark:bg-white/15 dark:text-slate-300 dark:hover:bg-white/20 dark:hover:text-white">
+                    <i class="ti ti-x text-lg"></i>
+                </span>
             </div>
         </div>
-        <div class="w-full flex flex-wrap gap-2 h-auto p-2">
-            @foreach($colors as $color => $class)
-                <button
-                    type="button"
-                    aria-label="Use {{ $color }} theme"
-                    data-theme-name="{{ $color }}"
-                    class="theme-btn w-10 h-10 {{ $class }} block dark:ring-white"
-                ></button>
-            @endforeach
+
+        <div class="w-full flex-1 space-y-4 overflow-y-auto p-4">
+            @if($showThemeColor)
+                <livewire:lf-theme-setting :module="$module" />
+            @endif
+            @if($showAsideMode)
+                <livewire:lf-aside-mode :module="$module" />
+            @endif
         </div>
-        <script type="text/javascript">
-            (() => {
-                const storageKey = @js($module.'-theme-color');
-
-                function updateActiveButton(currentTheme) {
-                    document.querySelectorAll('.theme-btn').forEach(btn => {
-                        const isActive = btn.getAttribute('data-theme-name') === currentTheme;
-                        btn.classList.toggle('ring-2', isActive);
-                        btn.classList.toggle('ring-offset-2', isActive);
-                    });
-                }
-
-                document.addEventListener('DOMContentLoaded', function () {
-                    const savedTheme = localStorage.getItem(storageKey) || @js(config('livewire-form.theme', 'orange'));
-                    document.body.setAttribute('data-theme', savedTheme);
-                    updateActiveButton(savedTheme);
-
-                    document.querySelectorAll('.theme-btn').forEach(btn => {
-                        btn.addEventListener('click', function () {
-                            const theme = btn.getAttribute('data-theme-name');
-                            localStorage.setItem(storageKey, theme);
-                            document.body.setAttribute('data-theme', theme);
-                            updateActiveButton(theme);
-                        });
-                    });
-                });
-            })();
-        </script>
     </div>
 </div>

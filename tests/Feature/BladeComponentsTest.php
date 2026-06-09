@@ -8,9 +8,9 @@ class BladeComponentsTest extends TestCase
 {
     public function test_it_renders_an_input_component(): void
     {
-        $html = $this->blade(
+        $html = (string) $this->blade(
             '<x-lf::form.input name="email" label="Email" placeholder="Email address" />'
-        )->render();
+        );
 
         $this->assertStringContainsString('Email', $html);
         $this->assertStringContainsString('name="email"', $html);
@@ -19,9 +19,9 @@ class BladeComponentsTest extends TestCase
 
     public function test_it_renders_modal_component(): void
     {
-        $html = $this->blade(
+        $html = (string) $this->blade(
             '<x-lf::modal title="Edit user">Content</x-lf::modal>'
-        )->render();
+        );
 
         $this->assertStringContainsString('role="dialog"', $html);
         $this->assertStringContainsString('Edit user', $html);
@@ -30,7 +30,7 @@ class BladeComponentsTest extends TestCase
 
     public function test_it_renders_table_component(): void
     {
-        $html = $this->blade(<<<'BLADE'
+        $html = (string) $this->blade(<<<'BLADE'
             <x-lf::table title="Users">
                 <x-lf::table.thead>
                     <x-lf::table.tr>
@@ -43,7 +43,7 @@ class BladeComponentsTest extends TestCase
                     </x-lf::table.tr>
                 </x-lf::table.tbody>
             </x-lf::table>
-        BLADE)->render();
+        BLADE);
 
         $this->assertStringContainsString('<table', $html);
         $this->assertStringContainsString('Users', $html);

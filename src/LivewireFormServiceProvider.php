@@ -4,6 +4,7 @@ namespace Hungnm28\LivewireForm;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 
 class LivewireFormServiceProvider extends ServiceProvider
 {
@@ -16,6 +17,7 @@ class LivewireFormServiceProvider extends ServiceProvider
     {
         $this->registerViews();
         $this->registerBladeComponents();
+        $this->registerLivewireComponents();
         $this->registerPublishing();
     }
 
@@ -39,6 +41,21 @@ class LivewireFormServiceProvider extends ServiceProvider
 
         // Nếu bạn có components class-based thì dùng:
         // Blade::componentNamespace('Hungnm28\\LivewireForm\\View\\Components', 'lf');
+    }
+
+    protected function registerLivewireComponents(): void
+    {
+        foreach (config('livewire-form.livewire.components', []) as $alias => $component) {
+            if (is_string($component) && class_exists($component)) {
+                Livewire::component($alias, $component);
+
+                continue;
+            }
+
+            if (is_string($component) && is_file($component)) {
+                Livewire::addComponent($alias, viewPath: $component);
+            }
+        }
     }
 
     protected function registerPublishing(): void

@@ -6,13 +6,13 @@
 ])
 
 <tr>
-    <td colspan="{{ $colspan }}" {{ $attributes->merge(['class' => 'px-4 py-12 text-center']) }}>
-        <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-gray-100 text-gray-500 ring-1 ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700">
-            <x-lf::icon.font :name="$icon" class="text-xl" />
+    <td colspan="{{ $colspan }}" {{ $attributes->merge(['class' => 'px-5 py-14 text-center']) }}>
+        <div class="mx-auto flex size-14 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 text-slate-500 shadow-sm shadow-slate-950/5 ring-1 ring-inset ring-white dark:border-white/10 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10">
+            <x-lf::icon.font :name="$icon" class="text-2xl" />
         </div>
-        <p class="mt-3 text-sm font-medium text-gray-700 dark:text-gray-200">{{ $title }}</p>
+        <p class="mt-4 text-sm font-bold text-slate-800 dark:text-slate-100">{{ $title }}</p>
         @if($description)
-            <p class="mx-auto mt-1 max-w-sm text-sm leading-5 text-gray-500 dark:text-gray-400">{{ $description }}</p>
+            <p class="mx-auto mt-1 max-w-sm text-sm leading-5 text-slate-500 dark:text-slate-400">{{ $description }}</p>
         @endif
     </td>
 </tr>

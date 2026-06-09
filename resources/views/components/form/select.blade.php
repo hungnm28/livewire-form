@@ -5,7 +5,7 @@
 @endphp
 <x-lf::form.field :name="$name" :label="$label" :help="$help" :class="$class" :id="$id">
     <select @if($id) id="{{ $id }}" @endif
-        {{ $attributes->merge(['name' => $name, 'class' => 'w-full rounded-lg border border-gray-200 bg-white [:where(&)]:px-4 [:where(&)]:py-3 text-gray-900 outline-none transition focus:border-primary-500 focus:ring-4 focus:ring-primary-100 [[data-error]_&]:border-red-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:focus:border-primary-400 dark:focus:ring-primary-950']) }}>
+        {{ $attributes->merge(['name' => $name, 'class' => 'h-12 w-full rounded-2xl border border-slate-200 bg-white px-4 text-[0.95rem] font-medium text-slate-950 shadow-sm shadow-slate-950/5 outline-none ring-1 ring-inset ring-transparent transition duration-200 hover:border-slate-300 hover:bg-slate-50/70 focus:border-primary-400 focus:bg-white focus:ring-4 focus:ring-primary-400/15 [[data-error]_&]:border-red-400 [[data-error]_&]:ring-red-300/20 dark:border-white/10 dark:bg-slate-900/80 dark:text-slate-100 dark:hover:bg-slate-900 dark:focus:border-primary-300 dark:focus:bg-slate-900 dark:focus:ring-primary-300/15']) }}>
         @foreach($data as $k=> $lb)
          @if(is_array($lb))
              <optgroup label="{{data_get($lb, 'label', $k)}}">

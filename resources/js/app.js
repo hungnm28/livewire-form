@@ -1,8 +1,6 @@
-import { cycleTheme, setupThemeSettingStore, setupThemeWatcher } from './actions/theme';
+import { cycleTheme, setupThemeWatcher } from './actions/theme';
 import { toggleFullscreen, setupFullscreenWatcher } from './actions/fullscreen';
 import { toggleAside, closeAside } from './actions/aside';
-
-setupThemeSettingStore();
 
 document.addEventListener('DOMContentLoaded', () => {
     setupThemeWatcher();

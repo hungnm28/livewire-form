@@ -4,14 +4,14 @@ Reusable Blade UI components for Laravel and Livewire applications.
 
 ## Requirements
 
-- PHP 8.1+
-- Laravel 10, 11, or 12
+- PHP 8.3+
+- Laravel 10, 11, 12, 13
+- Livewire 3 or 4
 - Tailwind CSS in the host application
-- Livewire when using the package layout or Livewire-bound form controls
 - Alpine.js for modal, aside, fullscreen, and theme interactions
 - Tabler Icons Webfont for icon components
 
-Livewire 3 already ships Alpine for the common setup. If your app does not use Livewire, install and boot Alpine yourself.
+Livewire ships Alpine for the common setup. If your app overrides Livewire's frontend assets, make sure Alpine is still available for interactive components.
 
 ## Installation
 
@@ -183,6 +183,16 @@ return [
 ```
 
 Set `assets.use_cdn_icons` to `false` when your app bundles `@tabler/icons-webfont` itself.
+
+Package Livewire components can be registered as alias => class pairs:
+
+```php
+'livewire' => [
+    'components' => [
+        'lf-user-form' => \Hungnm28\LivewireForm\Livewire\UserForm::class,
+    ],
+],
+```
 
 ## Backwards Compatibility
 

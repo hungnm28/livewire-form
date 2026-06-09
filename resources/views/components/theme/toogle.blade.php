@@ -1,2 +1,3 @@
-<span id="themeToggleIcon"  data-action="cycleTheme" class="w-12 h-12 flex rounded-full items-center justify-center hover:bg-primary-50 dark:hover:bg-gray-800 cursor-pointer">🖥</span>
-
+<span data-action="cycleTheme" class="group inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-2xl border border-slate-300/80 bg-white text-slate-800 shadow-md shadow-slate-950/15 ring-1 ring-inset ring-slate-200/90 backdrop-blur-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-50 hover:text-primary-700 hover:ring-primary-200 dark:border-white/15 dark:bg-slate-800 dark:text-slate-100 dark:shadow-black/35 dark:ring-white/10 dark:hover:bg-slate-700 dark:hover:text-primary-200 dark:hover:ring-primary-300/40">
+    <i data-theme-toggle-icon class="ti ti-device-desktop text-xl transition-transform duration-200 group-hover:scale-110" aria-hidden="true"></i>
+</span>

@@ -13,10 +13,10 @@
     };
 
     $class = trim(implode(' ', [
-        'align-middle',
+        'align-middle text-[0.95rem] leading-6 transition-colors',
         $alignClass,
-        $muted ? 'text-gray-500 dark:text-gray-400' : '',
-        $strong ? 'font-medium text-gray-950 dark:text-white' : '',
+        $muted ? 'text-slate-500 dark:text-slate-400' : 'text-slate-700 dark:text-slate-200',
+        $strong ? 'font-bold text-slate-950 dark:text-white' : '',
         $nowrap ? 'whitespace-nowrap' : '',
     ]));
 @endphp

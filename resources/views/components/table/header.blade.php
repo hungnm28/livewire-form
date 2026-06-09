@@ -19,11 +19,11 @@
     };
 @endphp
 
-<th scope="col" {{ $attributes->merge(['class' => trim('border-b border-gray-200 align-middle dark:border-gray-800 '.$alignClass.' '.($nowrap ? 'whitespace-nowrap' : ''))]) }}>
+<th scope="col" {{ $attributes->merge(['class' => trim('border-b border-slate-200/80 align-middle dark:border-white/10 '.$alignClass.' '.($nowrap ? 'whitespace-nowrap' : ''))]) }}>
     @if($sortable)
-        <button type="button" class="inline-flex items-center gap-1 rounded text-inherit transition hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-200 dark:hover:text-primary-400 dark:focus:ring-primary-900">
+        <button type="button" class="inline-flex items-center gap-1.5 rounded-xl px-2.5 py-1.5 text-inherit transition hover:bg-white hover:text-primary-700 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-300 dark:hover:bg-white/15 dark:hover:text-primary-300">
             <span>{{ $slot }}</span>
-            <x-lf::icon.font :name="$icon" class="text-sm opacity-75" />
+            <x-lf::icon.font :name="$icon" class="text-sm opacity-80" />
         </button>
     @else
         {{ $slot }}

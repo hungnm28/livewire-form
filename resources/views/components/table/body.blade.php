@@ -1,3 +1,3 @@
-<tbody {{ $attributes->merge(['class' => 'divide-y divide-gray-100 bg-white dark:divide-gray-800 dark:bg-gray-900']) }}>
+<tbody {{ $attributes->merge(['class' => 'bg-white/60 dark:bg-transparent']) }}>
     {{ $slot }}
 </tbody>

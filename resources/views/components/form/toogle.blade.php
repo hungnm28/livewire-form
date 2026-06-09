@@ -1,9 +1,8 @@
-
 @props(['label'=>'','value'=>1])
-<label class="inline-flex items-center gap-2 cursor-pointer text-gray-700 user-select-none">
+<label class="group inline-flex cursor-pointer select-none items-center gap-3 text-[0.95rem] font-medium text-slate-700 dark:text-slate-200">
     <input {{$attributes->merge(['type'=>'checkbox','class'=>'peer sr-only','value'=>$value])}}/>
-    <span class="w-10 h-5 border border-gray-400 p-0.5 rounded-full inline-flex items-center justify-start bg-gray-200 transition-all duration-300 ease-out peer-checked:justify-end peer-checked:border-green-500 peer-checked:bg-green-500 peer-checked:[&>span]:bg-white peer-checked:[&>span]:scale-95 peer-checked:[&>span]:shadow-sm peer-focus-visible:ring-2 peer-focus-visible:ring-green-300 peer-focus-visible:ring-offset-2 peer-disabled:cursor-not-allowed peer-disabled:opacity-60">
-        <span class="w-3 h-3 block rounded-full bg-gray-500 transition-all duration-300 ease-out"></span>
+    <span class="inline-flex h-7 w-12 items-center justify-start rounded-full border border-slate-300 bg-slate-100 p-0.5 shadow-inner shadow-slate-950/5 ring-1 ring-inset ring-transparent transition-all duration-300 ease-out group-hover:border-primary-300 peer-checked:justify-end peer-checked:border-primary-600 peer-checked:bg-primary-600 peer-checked:ring-primary-300/50 peer-focus-visible:ring-4 peer-focus-visible:ring-primary-300/25 peer-disabled:cursor-not-allowed peer-disabled:opacity-60 dark:border-white/15 dark:bg-slate-900 dark:peer-checked:border-primary-400 dark:peer-checked:bg-primary-400">
+        <span class="block size-5 rounded-full bg-white shadow-md shadow-slate-950/20 transition-all duration-300 ease-out peer-checked:scale-95"></span>
     </span>
-    <span class="whitespace-nowrap transition-colors duration-300 peer-checked:text-green-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-60">{{$label}}</span>
+    <span class="whitespace-nowrap transition-colors duration-300 peer-checked:text-primary-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-60 dark:peer-checked:text-primary-300">{{$label}}</span>
 </label>

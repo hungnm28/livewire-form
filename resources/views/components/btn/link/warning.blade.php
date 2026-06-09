@@ -1,2 +1,2 @@
 @props(['href'])
-<x-lf::btn.link {{$attributes->merge(['class'=>'bg-yellow-500 hover:bg-yellow-600 text-gray-900 hover:text-gray-800 hover:border-yellow-600'])}} :href="$href">{{$slot}}</x-lf::btn.link>
+<x-lf::btn.link {{$attributes->merge(['class'=>'border-amber-700/20 bg-amber-400 text-amber-950 shadow-amber-700/30 ring-amber-300/80 hover:bg-amber-300 hover:border-amber-500/40 hover:ring-amber-200 dark:border-amber-200/40 dark:bg-amber-300 dark:text-amber-950 dark:shadow-amber-950/35 dark:ring-amber-100/30 dark:hover:bg-amber-200'])}} :href="$href">{{$slot}}</x-lf::btn.link>
