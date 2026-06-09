@@ -61,9 +61,9 @@ return [
     */
     'livewire' => [
         'components' => [
-            'lf-menu-theme' => __DIR__.'/../resources/views/livewire/⚡menu-theme.blade.php',
-            'lf-theme-setting' => __DIR__.'/../resources/views/livewire/⚡theme-color.blade.php',
-            'lf-aside-mode' => __DIR__.'/../resources/views/livewire/⚡aside-mode.blade.php',
+            'lf-menu-theme' => __DIR__.'/../resources/views/livewire/menu-theme.blade.php',
+            'lf-theme-setting' => __DIR__.'/../resources/views/livewire/theme-color.blade.php',
+            'lf-aside-mode' => __DIR__.'/../resources/views/livewire/aside-mode.blade.php',
         ],
     ],
 ];
