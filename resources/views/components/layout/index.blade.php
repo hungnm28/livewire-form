@@ -27,14 +27,9 @@
     {{$head}}
 </head>
 <body x-data class="relative z-0 min-h-screen overflow-x-hidden font-sans text-slate-900 antialiased dark:text-slate-100" data-theme="{{$theme_color}}" {{$aside_mode}}>
-<div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.95),rgba(226,232,240,0.78)_34%,rgba(203,213,225,0.7)_68%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(30,41,59,0.95),rgba(15,23,42,0.96)_42%,rgba(2,6,23,1)_78%)]">
-    <div class="absolute -left-32 top-[-12rem] h-96 w-96 rounded-full bg-primary-300/35 blur-3xl dark:bg-primary-500/20"></div>
-    <div class="absolute right-[-8rem] top-24 h-80 w-80 rounded-full bg-cyan-300/25 blur-3xl dark:bg-cyan-500/10"></div>
-    <div class="absolute bottom-[-10rem] left-1/3 h-96 w-96 rounded-full bg-white/45 blur-3xl dark:bg-white/5"></div>
-</div>
-<div class="relative z-0 flex min-h-screen w-full bg-white/10">
+<div class="relative z-0 flex min-h-screen w-full bg-haze-100  pl-14  [[data-show-aside]_&]:pl-0">
     {{$aside}}
-    <main class="relative min-h-screen w-full flex-auto border border-slate-200/70 bg-white/80 shadow-2xl shadow-slate-950/10 backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/70 dark:shadow-black/20">
+    <main class="relative min-h-screen w-full flex-auto bg-haze-100 shadow-2xl shadow-slate-950/10 backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/70 dark:shadow-black/20">
         {{$slot}}
     </main>
     <x-lf::aside.overlay />

@@ -5,6 +5,7 @@
     "description": "Source assets for the hungnm28/livewire-form Laravel package.",
     "exports": {
         ".": "./resources/js/app.js",
+        "./css": "./resources/css/app.css",
         "./theme": "./resources/js/actions/theme.js",
         "./aside": "./resources/js/actions/aside.js",
         "./fullscreen": "./resources/js/actions/fullscreen.js"
