@@ -12,6 +12,7 @@
     'density' => 'comfortable',
     'compact' => null,
     'sticky' => false,
+    'filter' =>null,
     'loading' => false,
     'loadingText' => 'Loading...',
 ])
@@ -57,7 +58,9 @@
             @endif
         </header>
     @endif
-
+    @if($filter)
+        <div class="w-full">{{$filter}}</div>
+        @endif
     <div class="relative w-full overflow-x-auto">
         <table class="{{ $tableClass }}">
             {{ $slot }}

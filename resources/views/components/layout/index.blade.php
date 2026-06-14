@@ -27,7 +27,7 @@
     {{$head}}
 </head>
 <body x-data class="relative z-0 min-h-screen overflow-x-hidden font-sans text-slate-900 antialiased dark:text-slate-100" data-theme="{{$theme_color}}" {{$aside_mode}}>
-<div class="relative z-0 flex min-h-screen w-full bg-haze-100  pl-14  [[data-show-aside]_&]:pl-0">
+<div class="relative z-0 flex min-h-screen w-full bg-haze-100 pl-0  md:pl-14 [[data-show-aside]_&]:pl-0 [[data-show-aside]_&]:md:pl-0">
     {{$aside}}
     <main class="relative min-h-screen w-full flex-auto bg-haze-100 shadow-2xl shadow-slate-950/10 backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/70 dark:shadow-black/20">
         {{$slot}}
